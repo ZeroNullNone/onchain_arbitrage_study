@@ -1,0 +1,19 @@
+# Day 1 example only. Economic thresholds remain deliberately unfrozen.
+[research]
+mode = "paper"
+runtime_python = "3.12"
+capital_band_usd = [3000, 10000]
+target_sizes_usd = [100, 500, 1000]
+
+[universe]
+chains = ["arbitrum", "base", "optimism"]
+assets = ["USDC", "USDT", "WETH"]
+
+[sources]
+quote = ["lifi", "direct_confirmation_tbd"]
+block_context = "evm_rpc"
+
+[decision]
+freshness_window_seconds = "TBD_DAY_7_OR_16"
+minimum_economic_profit_usd = "TBD_DAY_16"
+

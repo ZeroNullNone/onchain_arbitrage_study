@@ -1,0 +1,45 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python environments and bytecode
+.venv/
+venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test, coverage, type-checker, and linter caches
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Runtime logs and databases
+*.log
+*.duckdb
+*.duckdb.wal
+
+# Research datasets are local and may contain large/raw responses.
+data/raw/*
+!data/raw/.gitignore
+data/normalized/*
+!data/normalized/.gitignore
+data/derived/*
+!data/derived/.gitignore
