@@ -20,6 +20,8 @@
 - Access Key 文件：项目根目录 `.env`
 - 笔记格式：Markdown
 - 单篇最大长度：20,000 字符
+- Public Repository：`https://github.com/ZeroNullNone/onchain_arbitrage_study`
+- Public Note Base：`https://github.com/ZeroNullNone/onchain_arbitrage_study/blob/main/`
 
 ## 安全规则
 
@@ -30,6 +32,7 @@
 5. 发布前必须向用户展示最终 Markdown 内容或明确指出将发布的文件。
 6. 发布成功后只报告 Check-in ID、URL、时间和 HTTP 状态，不回显认证信息。
 7. 如果 Key 无效或权限不足，停止操作并报告 HTTP 状态及安全处理后的错误信息。
+8. Repository 内部的 Markdown 链接继续使用相对路径；发布到 ICL 前，在请求正文中临时转换成指向 `main` 的绝对 GitHub URL，不回写成绝对链接。
 
 ## 每日发布流程
 
@@ -42,6 +45,14 @@
 - 内容不包含 Access Key、私钥、助记词、密码或其他秘密。
 - 内容不超过 20,000 字符。
 - Markdown 图片使用可公开访问的 URL；本地图片路径不会自动上传。
+
+发布到 ICL 的正文顶部应包含当天笔记的 Canonical GitHub URL，例如：
+
+```text
+https://github.com/ZeroNullNone/onchain_arbitrage_study/blob/main/docs/daily/day_01.md
+```
+
+外部发布时还应把正文中的 Repository-relative Links 转换成完整 GitHub URL。Repository 文件本身继续保留相对链接，确保 Fork、Branch 和本地预览仍然可导航。
 
 建议每日笔记路径：
 

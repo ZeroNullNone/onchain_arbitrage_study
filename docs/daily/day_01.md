@@ -4,6 +4,7 @@
 - 状态：完成
 - 今日主题：先定义研究，再设计系统
 - 今日核心问题：这 21 天要验证什么，什么证据才足以把“观察到价差”升级为“值得继续研究的机会”？
+- 公开版本：[GitHub Day 1 Note](https://github.com/ZeroNullNone/onchain_arbitrage_study/blob/main/docs/daily/day_01.md)
 
 ## 今日一句话总结
 
@@ -124,7 +125,7 @@ Models → API Probe → Collector → Data Gate → Baseline
 
 ## 当前暂定的研究方向
 
-以下内容仍需写入并正式确认在 `research_charter.md` 中：
+以下方向已经正式写入并确认在 `research_charter.md` 中：
 
 ### Primary Hypothesis
 
@@ -184,7 +185,7 @@ REJECTED_COST
 - [x] 21 天内明确不实现 Live Signing、Flash Loan、MEV、Dashboard 和 Production Deployment。
 - [x] Repo Skeleton、Agent Rules 与 pytest Smoke Test 完成。
 - [x] Git Repository、`origin` 与 Day 1 Commit 在本日最终步骤完成。
-- [ ] ICL Agent Check-in 尚未发布；只有用户明确要求发布时才调用 API。
+- [x] 用户已明确授权发布本日 ICL Agent Check-in；实际发布结果以 Agent API 返回为准。
 
 ## 带入后续日期的 Backlog / Data Gates
 
