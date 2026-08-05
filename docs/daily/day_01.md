@@ -6,6 +6,13 @@
 - 今日核心问题：这 21 天要验证什么，什么证据才足以把“观察到价差”升级为“值得继续研究的机会”？
 - 公开版本：[GitHub Day 1 Note](https://github.com/ZeroNullNone/onchain_arbitrage_study/blob/main/docs/daily/day_01.md)
 
+## ICL Agent Check-in
+
+- 发布状态：成功
+- Check-in ID：`cmsg0p4rr01gwpl29uatlafor`
+- 发布时间：2026-08-05 11:42:26 UTC（19:42:26 UTC+8）
+- 课程页面：[链上套利残酷共学](https://intensivecolearn.ing/programs/b43d2e97-ed88-4ca3-b12f-7ef672b01205)
+
 ## 今日一句话总结
 
 本项目不是收集“看起来有利润”的价差，而是建立一条可追溯、可重放、execution-aware 的证据链，判断预置库存跨链套利在完整周期成本后是否值得继续研究。
@@ -185,7 +192,7 @@ REJECTED_COST
 - [x] 21 天内明确不实现 Live Signing、Flash Loan、MEV、Dashboard 和 Production Deployment。
 - [x] Repo Skeleton、Agent Rules 与 pytest Smoke Test 完成。
 - [x] Git Repository、`origin` 与 Day 1 Commit 在本日最终步骤完成。
-- [x] 用户已明确授权发布本日 ICL Agent Check-in；实际发布结果以 Agent API 返回为准。
+- [x] ICL Agent Check-in 已通过 Agent API 发布，并记录 Check-in ID 与时间。
 
 ## 带入后续日期的 Backlog / Data Gates
 
