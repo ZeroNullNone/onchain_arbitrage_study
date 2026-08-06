@@ -4,7 +4,9 @@
 
 ## 当前状态
 
-Day 1 已完成研究范围、机会分类、系统设计、Day 2–21 实施计划和最小 Python 骨架。当前没有交易、钱包或外部 Quote 逻辑。
+Day 2 已完成纯本地经济模型与 Cost Ledger，可输出 Gross、Atomic/Local 和
+Inventory Cycle PnL，并显式处理 Quote 内含成本与缺失成本。当前没有交易、钱包、
+外部 Quote 或数据库逻辑。
 
 核心文档：
 
@@ -13,6 +15,7 @@ Day 1 已完成研究范围、机会分类、系统设计、Day 2–21 实施计
 - [System Design](docs/system_design.md)
 - [Day 2–21 Implementation Plan](docs/implementation_plan.md)
 - [Day 1 Note](docs/daily/day_01.md)
+- [Day 2 Note](docs/daily/day_02.md)
 
 ## 安全边界
 
@@ -49,4 +52,3 @@ data/derived/         Candidate/Decision/Report（内容默认忽略）
 ## 执行方式
 
 每天只实施 [Implementation Plan](docs/implementation_plan.md) 中当天的 Acceptance Criteria。若超出 120 分钟，缩小 Universe 或可选功能，但不删除 Raw Preservation、Decimals、Cost Ledger、Re-quote、Reject Logging 或 Tests。
-

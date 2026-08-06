@@ -7,6 +7,7 @@
 - 不牺牲 Raw Evidence、Decimals、Cost Ledger、Re-quote、Reject Reason、Tests 与 Lineage。
 - 当天只实现当天 Acceptance Criteria；Backlog 不自动叠加到次日，除非阻塞主线。
 - 所有金额使用 Integer Raw Units + `Decimal`；所有时间使用 UTC。
+- Daily Note 保持简短，只写：状态、结论、完成项、关键证据、下一步；不重复 Implementation Plan，通常控制在 30–50 行。
 
 ## Day 2 — PnL Truth 与 Cost Ledger
 
