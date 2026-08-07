@@ -1,0 +1,47 @@
+{
+  "fixture_version": 1,
+  "source": "https://mainnet.base.org",
+  "chain_id": 8453,
+  "block_number": 49641814,
+  "block_tag": "0x2f57956",
+  "pool_address": "0xcdac0d6c6c59727a65f871236188350531885c43",
+  "pool_factory_address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+  "observations": [
+    {
+      "observed_at": "2026-08-07T03:23:22.233422+00:00",
+      "latency_ms": "324.262",
+      "request": [
+        {"jsonrpc":"2.0","id":"chain-id","method":"eth_chainId","params":[]},
+        {"jsonrpc":"2.0","id":"pool-token0","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0x0dfe1681"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"pool-token1","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xd21220a7"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"pool-reserves","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0x0902f1ac"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"pool-fee","method":"eth_call","params":[{"to":"0x420dd381b31aef6683db6b902084cb0ffece40da","data":"0xcc56b2c5000000000000000000000000cdac0d6c6c59727a65f871236188350531885c430000000000000000000000000000000000000000000000000000000000000000"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"quote-100-usdc","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xf140a35a0000000000000000000000000000000000000000000000000000000005f5e100000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"quote-500-usdc","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xf140a35a000000000000000000000000000000000000000000000000000000001dcd6500000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913"},"0x2f57956"]},
+        {"jsonrpc":"2.0","id":"quote-1000-usdc","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xf140a35a000000000000000000000000000000000000000000000000000000003b9aca00000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913"},"0x2f57956"]}
+      ],
+      "response": [
+        {"jsonrpc":"2.0","result":"0x2105","id":"chain-id"},
+        {"jsonrpc":"2.0","result":"0x0000000000000000000000004200000000000000000000000000000000000006","id":"pool-token0"},
+        {"jsonrpc":"2.0","result":"0x000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913","id":"pool-token1"},
+        {"jsonrpc":"2.0","result":"0x00000000000000000000000000000000000000000000006f98b06b30622ef690000000000000000000000000000000000000000000000000000003901dc91948000000000000000000000000000000000000000000000000000000006a754f85","id":"pool-reserves"},
+        {"jsonrpc":"2.0","result":"0x000000000000000000000000000000000000000000000000000000000000001e","id":"pool-fee"},
+        {"jsonrpc":"2.0","result":"0x00000000000000000000000000000000000000000000000000ba1ff3f9898dc1","id":"quote-100-usdc"},
+        {"jsonrpc":"2.0","error":{"code":-32016,"message":"over rate limit"},"id":"quote-500-usdc"},
+        {"jsonrpc":"2.0","error":{"code":-32016,"message":"over rate limit"},"id":"quote-1000-usdc"}
+      ]
+    },
+    {
+      "observed_at": "2026-08-07T03:23:59.197153+00:00",
+      "latency_ms": "303.784",
+      "request": {"jsonrpc":"2.0","id":"quote-500-usdc-retry-1","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xf140a35a000000000000000000000000000000000000000000000000000000001dcd6500000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913"},"0x2f57956"]},
+      "response": {"jsonrpc":"2.0","result":"0x00000000000000000000000000000000000000000000000003a28783fbdfd8e9","id":"quote-500-usdc-retry-1"}
+    },
+    {
+      "observed_at": "2026-08-07T03:24:11.189137+00:00",
+      "latency_ms": "560.682",
+      "request": {"jsonrpc":"2.0","id":"quote-1000-usdc-retry-1","method":"eth_call","params":[{"to":"0xcdac0d6c6c59727a65f871236188350531885c43","data":"0xf140a35a000000000000000000000000000000000000000000000000000000003b9aca00000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda02913"},"0x2f57956"]},
+      "response": {"jsonrpc":"2.0","result":"0x0000000000000000000000000000000000000000000000000744d26bcc02102f","id":"quote-1000-usdc-retry-1"}
+    }
+  ]
+}
