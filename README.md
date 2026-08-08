@@ -4,9 +4,9 @@
 
 ## 当前状态
 
-Day 2 已完成纯本地经济模型与 Cost Ledger，可输出 Gross、Atomic/Local 和
-Inventory Cycle PnL，并显式处理 Quote 内含成本与缺失成本。当前没有交易、钱包、
-外部 Quote 或数据库逻辑。
+Day 4 已完成 LI.FI Quote API 的 3 routes × 3 sizes 只读 Probe、Raw Fixtures、
+离线 Adapter 与 Route Fingerprint。当前没有交易、钱包、持续 Collector 或数据库逻辑；
+返回的 transaction request 仅作为证据保存，不签名、不广播。
 
 核心文档：
 
@@ -16,6 +16,9 @@ Inventory Cycle PnL，并显式处理 Quote 内含成本与缺失成本。当前
 - [Day 2–21 Implementation Plan](docs/implementation_plan.md)
 - [Day 1 Note](docs/daily/day_01.md)
 - [Day 2 Note](docs/daily/day_02.md)
+- [Day 3 Note](docs/daily/day_03.md)
+- [Day 4 Note](docs/daily/day_04.md)
+- [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
 
