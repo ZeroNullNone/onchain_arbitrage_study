@@ -27,7 +27,7 @@ timeout、bounded retry/backoff、rate limiting、UTC/request ID/latency 与采�
 - Read-only、Simulation-only、Paper-only。
 - 不读取或处理私钥，不签名，不广播交易。
 - `.env`、Raw/Normalized/Derived 运行数据和本地 DuckDB 不进入 Git。
-- `ACCESS_KEY` 只用于按需发布 ICL Agent Check-in；不会进入研究代码或日志。
+- `ICL_ACCESS_KEY` 只用于按需发布 ICL Agent Check-in；不会进入研究代码或日志。
 
 ## 环境
 

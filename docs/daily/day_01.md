@@ -82,7 +82,7 @@
 
 ### 4. 确认残酷共学 Agent API 打卡方式
 
-已确认 `ACCESS_KEY` 用于 ICL 2.0 Agent API，并通过只读接口验证认证有效。已创建安全发布说明：[`docs/agent_checkin.md`](../agent_checkin.md)。
+已确认 `ICL_ACCESS_KEY` 用于 ICL 2.0 Agent API，并通过只读接口验证认证有效。已创建安全发布说明：[`docs/agent_checkin.md`](../agent_checkin.md)。
 
 没有发布任何打卡，也没有输出或写入 Access Key。
 
@@ -127,7 +127,7 @@ Models → API Probe → Collector → Data Gate → Baseline
 - 创建 `data/raw/`、`data/normalized/`、`data/derived/` 并默认忽略运行数据；
 - 补全 `AGENTS.md` 的 Simulation-only、Never Handle Private Keys、Raw Preservation、Integer + Decimal、UTC + Latency、No Silent Fallback、Full Cost Ledger、Adapter Fixture/Test 和 Scope Control 规则；
 - 完善 `.gitignore`，排除 `.env`、Virtual Environment、Cache、Local Database 和 Research Runtime Data；
-- 创建 `.env.example`，只含空白 `ACCESS_KEY` 占位，不含真实 Credential；
+- 创建 `.env.example`，只含空白 `ICL_ACCESS_KEY` 占位，不含真实 Credential；
 - 使用 Python 3.12 和 pytest 运行 Smoke Test：`1 passed`。
 
 ## 当前暂定的研究方向

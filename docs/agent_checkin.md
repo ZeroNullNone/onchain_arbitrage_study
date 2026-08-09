@@ -15,9 +15,12 @@
 - Program：链上套利残酷共学
 - Program ID：`b43d2e97-ed88-4ca3-b12f-7ef672b01205`
 - API Base URL：`https://intensivecolearn.ing/api/v1`
+- Agent API 文档：`https://intensivecolearn.ing/llms.txt`
 - OpenAPI：`https://intensivecolearn.ing/api/v1/openapi.json`
-- Access Key 环境变量：`ACCESS_KEY`
+- API Contract Version：`1.3.0`
+- Access Key 环境变量：`ICL_ACCESS_KEY`
 - Access Key 文件：项目根目录 `.env`
+- User-Agent：`onchain-arbitrage-study/0.1`
 - 笔记格式：Markdown
 - 单篇最大长度：20,000 字符
 - Public Repository：`https://github.com/ZeroNullNone/onchain_arbitrage_study`
@@ -25,7 +28,7 @@
 
 ## 安全规则
 
-1. 不得在终端输出、日志、异常消息、提交记录或回复中显示 `ACCESS_KEY`。
+1. 不得在终端输出、日志、异常消息、提交记录或回复中显示 `ICL_ACCESS_KEY`。
 2. 不得把 `.env`、Access Key 或带有认证 Header 的调试输出提交到 Git。
 3. 不得将 Access Key 写入源代码、Markdown、测试 Fixture 或命令参数示例中的明文位置。
 4. 只把 Key 发送到 `https://intensivecolearn.ing/api/v1/*`。
@@ -69,19 +72,24 @@ docs/daily/day_21.md
 
 ```http
 GET /api/v1/me
-Authorization: Bearer <ACCESS_KEY>
+Authorization: Bearer <ICL_ACCESS_KEY>
+User-Agent: onchain-arbitrage-study/0.1
 ```
 
 预期结果为 HTTP 200。不要输出响应中的个人资料，除非用户明确要求查看。
+所有 API 请求都必须发送上述显式 `User-Agent`；Python 默认 User-Agent 会被前置服务返回非 JSON HTTP 403。
 
 ### 3. 检查当天是否已经打卡
 
 查询本课程的个人打卡记录：
 
 ```http
-GET /api/v1/me/check-ins?programId=b43d2e97-ed88-4ca3-b12f-7ef672b01205
-Authorization: Bearer <ACCESS_KEY>
+GET /api/v1/me/check-ins?page=1&pageSize=20&programId=b43d2e97-ed88-4ca3-b12f-7ef672b01205
+Authorization: Bearer <ICL_ACCESS_KEY>
+User-Agent: onchain-arbitrage-study/0.1
 ```
+
+响应位于 `data.items`，分页信息位于 `data.pagination`。若 `totalPages > 1`，继续读取后续页，不能只检查第一页便假设没有重复记录。
 
 按 UTC+8 判断当天是否已有记录：
 
@@ -92,7 +100,8 @@ Authorization: Bearer <ACCESS_KEY>
 
 ```http
 POST /api/v1/me/check-ins
-Authorization: Bearer <ACCESS_KEY>
+Authorization: Bearer <ICL_ACCESS_KEY>
+User-Agent: onchain-arbitrage-study/0.1
 Content-Type: application/json
 Idempotency-Key: <8-128 个允许字符>
 ```
@@ -115,6 +124,7 @@ onchain_arb_day_01_20260805_v1
 相同 Method、Path 和 Body 的重试必须复用同一个 Key。笔记内容发生变化时必须使用新的 Key，例如把结尾从 `_v1` 改为 `_v2`。
 
 创建成功的预期状态为 HTTP 201。
+创建成功后重新读取 check-in list，并按返回 ID 确认记录可见；不要只依赖 POST response 判断持久化成功。
 
 ### 5. 更新已有打卡
 
@@ -122,7 +132,8 @@ onchain_arb_day_01_20260805_v1
 
 ```http
 PATCH /api/v1/me/check-ins/{checkinId}
-Authorization: Bearer <ACCESS_KEY>
+Authorization: Bearer <ICL_ACCESS_KEY>
+User-Agent: onchain-arbitrage-study/0.1
 Content-Type: application/json
 ```
 
@@ -163,3 +174,4 @@ Web URL：<服务端返回值，如有>
 - `503`：审计存储不可用，写操作已回滚；不要假设发布成功。
 
 遇到不确定的响应时，先使用只读 GET 接口确认服务器状态，不要盲目重复 POST。
+API 权限错误遵循 `{"apiVersion":"v1","error":{"code":"...","message":"..."}}`。若 403 不是此 JSON envelope，先确认请求使用了显式 User-Agent；不得把前置服务的非 JSON 403 误判为 Key 无效。
