@@ -4,9 +4,10 @@
 
 ## 当前状态
 
-Day 4 已完成 LI.FI Quote API 的 3 routes × 3 sizes 只读 Probe、Raw Fixtures、
-离线 Adapter 与 Route Fingerprint。当前没有交易、钱包、持续 Collector 或数据库逻辑；
-返回的 transaction request 仅作为证据保存，不签名、不广播。
+Day 5 已完成固定 3 routes × 3 sizes 的低并发 LI.FI Quote Collector。每次请求先保存
+append-only Raw Envelope，再解析为可追溯的 Parquet + DuckDB normalized record；包含
+timeout、bounded retry/backoff、rate limiting、UTC/request ID/latency 与采集 metrics。
+当前没有交易或钱包逻辑；返回的 transaction request 仅作为证据保存，不签名、不广播。
 
 核心文档：
 
@@ -18,6 +19,7 @@ Day 4 已完成 LI.FI Quote API 的 3 routes × 3 sizes 只读 Probe、Raw Fixtu
 - [Day 2 Note](docs/daily/day_02.md)
 - [Day 3 Note](docs/daily/day_03.md)
 - [Day 4 Note](docs/daily/day_04.md)
+- [Day 5 Note](docs/daily/day_05.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
@@ -31,11 +33,18 @@ Day 4 已完成 LI.FI Quote API 的 3 routes × 3 sizes 只读 Probe、Raw Fixtu
 
 - Python 3.12+
 - 测试：pytest
-- 后续数据层：Parquet + DuckDB（依赖在对应实施日再添加）
+- 数据层：append-only Raw JSON + Parquet + DuckDB
 
 ```bash
 uv sync --extra dev
 uv run pytest
+```
+
+Day 5 collector 默认运行两小时、每轮间隔 45 秒。单轮 smoke test 使用 `--once`：
+
+```bash
+uv run python scripts/collect_quotes.py --once
+uv run python scripts/collect_quotes.py
 ```
 
 也可使用标准 `venv` 与 `pip install -e '.[dev]'`。
