@@ -1,0 +1,105 @@
+{
+  "chain": {
+    "expected_chain_id": 42161,
+    "name": "arbitrum",
+    "rpc_url_env": "ARBITRUM_RPC_URL"
+  },
+  "exchanges": [
+    {
+      "latency_ms": "508.587",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:1\",\"method\":\"eth_chainId\",\"params\":[]}",
+        "endpoint_env": "ARBITRUM_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "d7e024e8-2d76-4e75-8d8e-2d34def69718"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:12.814560Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:1\",\"result\":\"0xa4b1\"}\n",
+        "headers": {
+          "CF-RAY": "a28c5f680cae3c51-KUL",
+          "Connection": "close",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:13 GMT",
+          "Server": "cloudflare",
+          "Transfer-Encoding": "chunked",
+          "cf-cache-status": "DYNAMIC",
+          "vary": "accept-encoding",
+          "x-envoy-upstream-service-time": "1"
+        },
+        "status": 200
+      }
+    },
+    {
+      "latency_ms": "305.590",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:2\",\"method\":\"eth_blockNumber\",\"params\":[]}",
+        "endpoint_env": "ARBITRUM_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "d7e024e8-2d76-4e75-8d8e-2d34def69718"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:13.323200Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:2\",\"result\":\"0x1d6219ac\"}\n",
+        "headers": {
+          "CF-RAY": "a28c5f6a9c843c53-KUL",
+          "Connection": "close",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:13 GMT",
+          "Server": "cloudflare",
+          "Transfer-Encoding": "chunked",
+          "cf-cache-status": "DYNAMIC",
+          "vary": "accept-encoding",
+          "x-envoy-upstream-service-time": "0"
+        },
+        "status": 200
+      }
+    },
+    {
+      "latency_ms": "410.524",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:3\",\"method\":\"eth_getBlockByNumber\",\"params\":[\"0x1d6219ac\",false]}",
+        "endpoint_env": "ARBITRUM_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "d7e024e8-2d76-4e75-8d8e-2d34def69718"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:13.628869Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"d7e024e8-2d76-4e75-8d8e-2d34def69718:3\",\"result\":{\"baseFeePerGas\":\"0x1314470\",\"difficulty\":\"0x1\",\"extraData\":\"0xa3553cd1ef8b2ed69a4420ad95ceb8823ce4d3e20d06d4134585af89561a3bea\",\"gasLimit\":\"0x4000000000000\",\"gasUsed\":\"0x69994\",\"hash\":\"0xa647f88449f6203585c6632ab4c16b9f1eedc18922814f0f2269dbebb4be0c72\",\"l1BlockNumber\":\"0x1887dc3\",\"logsBloom\":\"0x0000000000000000000000000000a000080000000000000000000000000000000000004000000000000000000000000000004000000100000000000400000000000000010000000200000008000000000000200000000000000000000000000000000000420000000000000420000800000000000000000020000010000000000004000000000000000000000002000100000000000000000000000000000000000000200000000010000000008000000000000000000004000000000000000400000002100000000040000008000000000000000000000000000000000022000000000000000400000000000000000002000000000000040000000000000000\",\"miner\":\"0xa4b000000000000000000073657175656e636572\",\"mixHash\":\"0x000000000002828e0000000001887dc300000000000000330000000000000000\",\"nonce\":\"0x0000000000269fab\",\"number\":\"0x1d6219ac\",\"parentHash\":\"0x9b48c111f9fa14275dd1b7f7116ddc5043b31672bbc94c65a51788a62900fd04\",\"receiptsRoot\":\"0xa619029c5ec445d41467403fffbf47479ecfc75c6f8a201ecc5057804e73c96b\",\"sendCount\":\"0x2828e\",\"sendRoot\":\"0xa3553cd1ef8b2ed69a4420ad95ceb8823ce4d3e20d06d4134585af89561a3bea\",\"sha3Uncles\":\"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347\",\"size\":\"0x7a7\",\"stateRoot\":\"0x22c577725308c82db6b5398d47822b970be566b161e2d64ebe276aa33fd89ba1\",\"timestamp\":\"0x6a795848\",\"transactions\":[\"0xb5bd5f76553afd094de697d8448a4a5ec56a1b11b5003d21cdebb7db1c45f102\",\"0x54552d393dcc68f72455e8131facdf87cc6d492ac089245ef5e25f27b66b9101\",\"0xd6f9c6da1922b5fe0e0952d01cc9012f64efc41a6e1c05e36b5f0ffc610ca5d7\"],\"transactionsRoot\":\"0x906924bbaa7963e50b1d8c189d435fb3928065884a13c2eac1b507635bbddbbd\",\"uncles\":[]}}\n",
+        "headers": {
+          "CF-RAY": "a28c5f6c896f3c62-KUL",
+          "Connection": "close",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:13 GMT",
+          "Server": "cloudflare",
+          "Transfer-Encoding": "chunked",
+          "cf-cache-status": "DYNAMIC",
+          "vary": "accept-encoding",
+          "x-envoy-upstream-service-time": "0"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "latency_ms": "1224.945",
+  "observed_at": "2026-08-10T04:49:12.814533Z",
+  "quote_anchor": null,
+  "request_id": "d7e024e8-2d76-4e75-8d8e-2d34def69718",
+  "schema_version": 1,
+  "source": "evm_rpc"
+}

@@ -89,21 +89,7 @@ class QuoteStorage:
     def write_raw(self, envelope: Mapping[str, Any]) -> Path:
         """Atomically create one immutable raw envelope and return its absolute path."""
 
-        observed_at = datetime.fromisoformat(
-            str(envelope["observed_at"]).replace("Z", "+00:00")
-        )
-        partition = self.raw_dir / observed_at.strftime("%Y-%m-%d")
-        partition.mkdir(parents=True, exist_ok=True)
-        request_id = str(envelope["request_id"])
-        final_path = partition / f"{observed_at.strftime('%Y%m%dT%H%M%S%fZ')}_{request_id}.json"
-        temporary_path = partition / f".{request_id}.{uuid4().hex}.tmp"
-        serialized = json.dumps(envelope, indent=2, sort_keys=True) + "\n"
-        with temporary_path.open("x", encoding="utf-8") as output:
-            output.write(serialized)
-            output.flush()
-            os.fsync(output.fileno())
-        os.replace(temporary_path, final_path)
-        return final_path.resolve()
+        return append_raw_envelope(self.raw_dir, envelope)
 
     def record_attempt(
         self,
@@ -194,3 +180,25 @@ class QuoteStorage:
         connection = duckdb.connect(str(self.database_path))
         connection.execute("SET TimeZone = 'UTC'")
         return connection
+
+
+def append_raw_envelope(raw_dir: Path, envelope: Mapping[str, Any]) -> Path:
+    """Atomically append a source envelope without exposing storage internals."""
+
+    observed_at = datetime.fromisoformat(
+        str(envelope["observed_at"]).replace("Z", "+00:00")
+    )
+    partition = raw_dir / observed_at.strftime("%Y-%m-%d")
+    partition.mkdir(parents=True, exist_ok=True)
+    request_id = str(envelope["request_id"])
+    final_path = (
+        partition / f"{observed_at.strftime('%Y%m%dT%H%M%S%fZ')}_{request_id}.json"
+    )
+    temporary_path = partition / f".{request_id}.{uuid4().hex}.tmp"
+    serialized = json.dumps(envelope, indent=2, sort_keys=True) + "\n"
+    with temporary_path.open("x", encoding="utf-8") as output:
+        output.write(serialized)
+        output.flush()
+        os.fsync(output.fileno())
+    os.replace(temporary_path, final_path)
+    return final_path.resolve()

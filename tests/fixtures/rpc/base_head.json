@@ -1,0 +1,120 @@
+{
+  "chain": {
+    "expected_chain_id": 8453,
+    "name": "base",
+    "rpc_url_env": "BASE_RPC_URL"
+  },
+  "exchanges": [
+    {
+      "latency_ms": "378.618",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:1\",\"method\":\"eth_chainId\",\"params\":[]}",
+        "endpoint_env": "BASE_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:11.797742Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"result\":\"0x2105\",\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:1\"}\n",
+        "headers": {
+          "CF-RAY": "a28c5f61bb514a38-KUL",
+          "Connection": "close",
+          "Content-Length": "82",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:12 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.01,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=YTns8bT9D3z%2FJaTSkdCwu9LPeBEjqU154Ssa9psV5P8309V2QxIW9FGWf3cJjQx3zTJS74xUrQTA1epS4mZ4U2KdadsD1L%2BmD7mcaI8e25%2BvcRWiHe3ypOCF6yf9FBhFQ1Z9icNUbd0s5m3Zbk0%3D\"}]}",
+          "Server": "cloudflare",
+          "Strict-Transport-Security": "max-age=2592000",
+          "X-Content-Type-Options": "nosniff",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "<redacted>",
+          "vary": "Origin",
+          "x-proxyd-cache-status": "HIT"
+        },
+        "status": 200
+      }
+    },
+    {
+      "latency_ms": "273.793",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:2\",\"method\":\"eth_blockNumber\",\"params\":[]}",
+        "endpoint_env": "BASE_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:12.176466Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"result\":\"0x2f77db2\",\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:2\"}\n",
+        "headers": {
+          "CF-RAY": "a28c5f636bda0b29-KUL",
+          "Connection": "close",
+          "Content-Length": "85",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:12 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.01,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=0fbK2MzcbuuS8JfHwQFzm9acf6pMttvluIlsVkZuXYSX0ZFJMHumdKjGySa%2FL4bUV1DEHzeWLnpIW4XPq6rDV%2BuAXCMvRrZ5j6iocn%2BkHUXntHxQvoea5qNqC2rVrC5III%2BSxM9gCcEGEwlHBpE%3D\"}]}",
+          "Server": "cloudflare",
+          "Strict-Transport-Security": "max-age=2592000",
+          "X-Content-Type-Options": "nosniff",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "<redacted>",
+          "vary": "Origin",
+          "x-proxyd-cache-status": "MISS"
+        },
+        "status": 200
+      }
+    },
+    {
+      "latency_ms": "360.680",
+      "request": {
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:3\",\"method\":\"eth_getBlockByNumber\",\"params\":[\"0x2f77db2\",false]}",
+        "endpoint_env": "BASE_RPC_URL",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "User-Agent": "onchain-arbitrage-study/0.1",
+          "X-Request-ID": "1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4"
+        },
+        "method": "POST"
+      },
+      "requested_at": "2026-08-10T04:49:12.450331Z",
+      "response": {
+        "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"baseFeePerGas\":\"0x4c4b40\",\"blobGasUsed\":\"0x228b94\",\"difficulty\":\"0x0\",\"excessBlobGas\":\"0x0\",\"extraData\":\"0x01000000640000000500000000004c4b40\",\"gasLimit\":\"0x17d78400\",\"gasUsed\":\"0xd83431\",\"hash\":\"0x1a769dfa1669f4bdf5abc59f26d553cece31426d31aa1a94d7b30b8ca7aeb9b1\",\"logsBloom\":\"0x29eaa10003e0701b0a9199279201120115d38040018041080b861aa1082703c14d0c014d9b10004055024c914a023414d326a84005213122bec4478300246600768260d2bdcf05ac140630c8014912ed8c613c0d9a4c33d0101105048c44120960a48882a25bb0910287387180022c49858b7a46095c0a52c282951410881b08c8ad13102c0a8c60409a08b0f270dba03816adc14b29c908c00382f105651e00024483b0f949953a32c488002044718b2aa4a850008a302ee1832f2101154697280032bad42220d150910b805042c0e54121c37e8e6d55100281e4c08e8de012c1340c7020d66e00b214a211112b3cee80272bc8098668e05336ae8631184a14\",\"miner\":\"0x4200000000000000000000000000000000000011\",\"mixHash\":\"0x75d1f17006309d8084ae867547eba06bb9f38d2f99ca1eeb8b364b313353a359\",\"nonce\":\"0x0000000000000000\",\"number\":\"0x2f77db2\",\"parentBeaconBlockRoot\":\"0x9c868efd4f95eae00b35795fe78af44412b5b088cb133427a481fc9c00e3119d\",\"parentHash\":\"0x7f01749b127f12c5359fc114eb529d4d244bf6305132a89ca27783c1610cbf43\",\"receiptsRoot\":\"0xad45acd80739c3eb69b546243714e3d4dfb3cbfb01e8c7c940ded630bbe0e7bc\",\"requestsHash\":\"0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"sha3Uncles\":\"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347\",\"size\":\"0x9a04\",\"stateRoot\":\"0x6fd80ecc0682d009f8264fab92b695e31f1768f73e52f4af481d423631da44a9\",\"timestamp\":\"0x6a795847\",\"transactions\":[\"0xcce7b33f60faa99c9f7547ed7b04897673a7c798efb750cdaa265c5795233288\",\"0xfcafe244f3a1d2ca5b7291c9119cc3421304857e121b9b99515c89a9b0e6b4ab\",\"0x50f577badc262a42795048236474da740aa6a0ac95f0ab278d05d69c7674346e\",\"0x21d4c6a96083b9a2c949f1163ab3629335670aa8287201086f5e6c42926cda5a\",\"0xe32e0f5c0a7f95b8d4cf2d2a736c8c6caa3f8125651ab089a99fcc1130669081\",\"0x018362fa9ad80dddc8bd84b042308a7c7a8f17fdcc2b555b3b047ac3fe6bb197\",\"0x5cfe2ab4aabe8ff894290be612741895160f8b5066c413816e9427a78d3c969f\",\"0x3f0f1e0719461f3fbbbcde325488acf507ac9922261c43e3b302dea32ba0dadd\",\"0xe84dd1a53d7cba23b4e8b7215f791e1f0ba84c7c5a3e94d879a022a06368a621\",\"0xfafbd97c7d5127c9ccbb980ca907a69821bd1cf90f5e64cbba78815b434d583a\",\"0x83772240bb2e6207cea2fe7f9580d722a5749b06e700f423a9a6160cc943b646\",\"0x68eac404b98c2cf1f81d1b550871b7980acff5dcee7b13fff24ac437c97137cc\",\"0x9e73de533611f118da8767acd52d99cb6c41e59a69df556c3b4e8dca6d9ac6a5\",\"0x0e679fcf4aa12962821ed37e2343387a5aed9ddc892ab1488cea513188ddfd91\",\"0x8a05d861cc98af4b605bc76e33619899c2488275db00560a125c04f703b9bf52\",\"0x44b5a358295cdc3c87345ce27fd676e242105bd93b8c657fd2ded2ede495d5d7\",\"0xa79bd0aa4a51b05ae463a4d4d2ae9d3e189c1b78e38c06a584b09dfb37f7086b\",\"0x3a6edd3b4d2097e0bda9087f5b1b134f318cd0f07bcf6f12645175dc885461af\",\"0xcf2375f12aca48db24dac66be47d1191cf902db7320960b73ecbd0f2787c9f98\",\"0xc8e850ffd4968a91bd7d9bc5428535af834c4f03ebe7dd7547e2659102e74975\",\"0x639b0f37eaecab120fb86177ede38b301b52da140cbd6f92cca4c54a5d3b6b71\",\"0x6a7ee3a0ebff7d29b0b27db12e29dbcba31f8274590b80007514ca2a7ca1a08f\",\"0x53b37f096bea26871facb7a13dad33a6039f2ccb0661c9eb314f1f543da92162\",\"0x07c30fc5faf5ff901028869b331dcc8033a0971c160cbdda023319bd362a77d1\",\"0x54e34dd1bbdbfaae6f70e12bcffdb79aea113b251337294056492153d52f475c\",\"0xfa22248dbae4d6399055eb3faee01b500f994d427a664c82ebf02ff65a63abd3\",\"0x3eb708bca62d4dbe7842122c1d9f88e3ac41e1d72fcfbbf9b3b1b47adc49b7f2\",\"0x2d736207d4a32bde267a34f8a5ba143079ab0794f348244d4f54e9945dd79cfd\",\"0x5e5f31bd345e0803ef10fb6e725c1d3d200e7154050d38116d66afaaed5d51da\",\"0x0ae24ed55920bde9ebfc2eee9f8b0d2a6457de82c94676b044d55f77ff6b7204\",\"0x5496cc3ec720db7abeb6908d4ed2d076abd0e672c954f7c0e7a94efd8b311a83\",\"0x5fc1170ce13e46943f1d08f5fa2a2a973c0087c26336cbb83e1044db8c661da2\",\"0xe0aa62bc430ad0114209687c2f3e0e088fa17a546231fd86e40288b2c484fb4f\",\"0x3589376b81e08c389e45cb4bbbd58708bf186f965c86053ff82cdacc0aa0f019\",\"0x63c20cb2232de611a6b94ad34ba7ceef72335cef05284b03458029eaaec04830\",\"0x11bcfdb2e8ca09b433b80e399f527d3c18b3ee80fbf6f4f8e17fe5687decb7ea\",\"0x94ed6c41de1aeb5e256a64ef02a2bc050148db2ea01da186a0a98ec1a8e1cc39\",\"0x0ac40e01be53bed8f67c7c8283cc28203d7efa4f3d5a85fd5fb2280ddc524e13\",\"0x16b92cd676465f0288cc36e84919d23ebe525e8a15cd8378e2de70e48643fbe3\",\"0x9325c9918055e5c5832316f046a32e1e32da4f7c7a7bcad0e6285dd630d7fa56\",\"0xa1108c0d021c0daadd59594cc4225cefa7dadc780c7d47a3d4b096030c8b4872\",\"0xbca5b57909e461fe9271575035c4c81fea0529717bced37e89e0a0fbfbece6dc\",\"0x74d84d2b0d90e5475f2652306f9f092b3e687dcb0863b80b6279a8a520ff436d\",\"0xdec9ca9d72e406b1eaa21431e9e56160c65fc371cdc8ccd0871e975b59454335\",\"0x8cad25a25528810a011afaf77af9898c4b2d939ffb3b05967c5f7dc979143919\",\"0x90f3aa13268cf44cff2830c0e263437ecc60b536e20c69c8d01299834a077817\",\"0xbb923b52965cdfba20f82320a851e7b03478ac57d83e584b2d2ff7a6d4f591ff\",\"0x833b43a8d5ebb1a70747fb0b6c26945e19e139b3caacaedd22d98ad57a17a543\",\"0xfbb97f37ffc1c3d0271ee3b3db34ff85bbbbf6a84d78d6cb2d6df28dd9d18478\",\"0x4610d2327b670f7d4bdc8bec0cffeeb6b7ddb7d172fb15585026235ad56e16af\",\"0x9b24a2573ddd6e0f8e876246f5876634fb05e5d60802728c1a913613da5a37fc\",\"0xcdf9e3a7754e00abd3e88828803658b6ac431c61c0355db73f02a3217775ae82\",\"0x8c4f28b5cf362c6eb922475ddae8988dfb050a074cff1e591ec1c8b59bfda189\",\"0x2dd03c277ba9cec88ef90676053093d168714f04c9e92f6e891b8e4ccd765948\",\"0xae9ab2c86b03001f0bcbcfd9940c687840e2645ae5845d911026eba8c49ab0ac\",\"0x3aa1003ccc9f0bd8f8603823661c66761d1e481a88d5828f1f835b8152c6b16e\",\"0x2e9a695c7a1da369db750d6dd6785b87f7ea26f80de8259473a2edeadd779735\",\"0x21681a0760bfff7b643f8fa5ccbd918bee09a401f5b32e532c23f4fd9aa72671\",\"0xbc5802b3aba11b0b8a98047af6f592e01d7314aa983eaa39ec14b0f23c94f2cd\",\"0x95de1c84c3859a4dc26580bd7dcd159c7a7fa1349fc89aed2cc23a75203aa0f3\",\"0x1daada6993dc7265605082f80ae1cdea2ff44889b2025e5f9f6046f75e1022c5\",\"0x6871fed3a3ef62e386017a25e93f6e8c596aa2abed6a10860b557f119e18d3eb\",\"0x81ec8e61434270183626c5fba32485a1dd3e26fa6855729cb270ac28a5a83c77\",\"0xe4fe23939ab0cd060d61f9978638d1a67220cb9dce137e3b419e87a56b5e8a50\",\"0x668c5c22e84dac126c40ddc11581312f7afac5beb0a7d460ced53601f481ef03\",\"0x8eadffcb8a72fecd765eeb4a2fa061928f91b4a595db5cc8fe5690c4845fc171\",\"0x5b549659b0290f51124b0b6d9359bfb79b647838879615ef04f51dcfd1fba29f\",\"0x98806199cac1c904a67ce045ec87bacb4adffb8ab289dea607f54b8e54021235\",\"0x60f2864d162f9107d42019fc654eb2b617921cedb53ff2449a063cc21054a0dc\",\"0x0c7afed2ffc2776ca24da90676cc72376a61b9eb936e5cc7012226b30fd915f5\",\"0x95962c6f8cf2117b81b6ca6433bc38792a330cc7e19a708f72234d1809a41670\",\"0x876435114d20187f3a64470cb6465bae25bcb45e99c1e66a5ec2a7f1792d5bb3\",\"0x811a720ba44a8553166ccfe09dc181094f08d2854f726740c04a8fe595f4ef8f\",\"0x1fdb8f6c4b7e3202417ec6fde6533d63e3a128d6c8d0b2c5c14f3fe633613ce5\",\"0x3a9b316eb5522c7e41726e150ea27cbe1db847a595d97784108f3285a4ec8c37\",\"0x8ad382ad37e0c28a116f6ae45a6d3b9ac8f4684e2f28b82dee0a8ff44f373292\",\"0x14787abafb2144771c413e7ed81cc7cd63f6863b132f9a130cec3758ea4a3354\",\"0x5e88fb64f53d7726589e8a2dd5048b56391e6b3529949e3e5d4640c90f4c9977\",\"0x16494766a778d8e4bf636b306466d95891f0f554d482849a9783fcf629280942\",\"0x8cbd7ba66426bb7868bac6ef5645d33eee1361ad8b56d792618e8b0bfb790cec\",\"0x6cf289c566760c562d305330429bfd73f374d292c2fc7e04adceea2b120f7329\",\"0xa3dc6e144e4280fd3771934723335b2d92b9a46ef690d6160ac2df082f4ef235\",\"0xffcc7b91e2e0b26b878af53c77c7dbf1cf61a698f38af3bc2c635f2bda549e70\",\"0x391ba22d761139b716e9164434088b6622b977dc5ecf700e90ca927566f16b05\",\"0xee2a8a71faa3e0c4a9b29f9320007036bdb165e41c6cadc60ce5cb9835a4ff42\",\"0x92c293c9d5f8cc54e66b3b8ab447950535ea831c09002c390c9cef2779b1c83d\",\"0xd81b93704d3de4f77e046c37b2a7eb4dbbea5ca425d6f9e23bff2a3fc1a35e98\",\"0x48164c1cc812433005fc2f4595b489c577ceefe1901186ada0424e10aa976bea\",\"0x9fef7491bf31daf8e5f11f431299a43a70a95c3ebb1035fe35bff1470a42f8b2\",\"0xb5bc0106ed8e2dfa37b762560b8f2c905de2827619f6aadb9023e5fadebee4d0\",\"0xe7d5e48d05245e40d074ca7693eeec188f53fcf4b1401c48329cf51240f2775d\",\"0x4fa43b406d938e9042409fd467ded532ecfd0a2a23285783699f53a5eb522087\",\"0x2713ed7b682b437b80acf109c0af4aecd481d84bc8dbd4e29f434444a03e1ff5\"],\"transactionsRoot\":\"0x65cfd2ae88e161d8bffe46c4e778a103c0ac08107073fcb88a2e7facbf2e08cd\",\"uncles\":[],\"withdrawals\":[],\"withdrawalsRoot\":\"0x59e7b163ac0f760eeebcfc06d3bb063fb212159d08d802cae5168e368e5b4f09\"},\"id\":\"1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4:3\"}\n",
+        "headers": {
+          "CF-RAY": "a28c5f651b94cf0c-KUL",
+          "Connection": "close",
+          "Content-Type": "application/json",
+          "Date": "Mon, 10 Aug 2026 04:49:12 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.01,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=DVgM8u6EGqN0KFt4am8tSfXZAd9d2dbi8XW284fDuL0w8FAU0K890D8M9ApGP5czMxqS23K3dbZjDY7z%2FeTCJY%2Bh3UOre02wxV3pcuj18NaJpR150MPLJy4X65Ve3WMBJ4RbY8Szf3rLAiUBpMs%3D\"}]}",
+          "Server": "cloudflare",
+          "Strict-Transport-Security": "max-age=2592000",
+          "Transfer-Encoding": "chunked",
+          "X-Content-Type-Options": "nosniff",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "<redacted>",
+          "vary": "Origin",
+          "x-proxyd-cache-status": "MISS"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "latency_ms": "1013.415",
+  "observed_at": "2026-08-10T04:49:11.797641Z",
+  "quote_anchor": null,
+  "request_id": "1547ce46-2e2d-4ea7-b7ad-ebfa77b39be4",
+  "schema_version": 1,
+  "source": "evm_rpc"
+}

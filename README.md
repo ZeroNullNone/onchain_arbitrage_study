@@ -4,10 +4,10 @@
 
 ## 当前状态
 
-Day 5 已完成固定 3 routes × 3 sizes 的低并发 LI.FI Quote Collector。每次请求先保存
-append-only Raw Envelope，再解析为可追溯的 Parquet + DuckDB normalized record；包含
-timeout、bounded retry/backoff、rate limiting、UTC/request ID/latency 与采集 metrics。
-当前没有交易或钱包逻辑；返回的 transaction request 仅作为证据保存，不签名、不广播。
+Day 6 已完成 Base、Arbitrum 与 Optimism 的 read-only RPC Block Context。每次 observation
+先 append 完整 Raw RPC exchanges，再验证 chain ID、reported head 与 exact block，输出 block
+timestamp、base fee、UTC/request ID/latency 与 Raw lineage；也可关联 fresh LI.FI Quote 并记录
+时间偏移。当前没有交易或钱包逻辑；transaction request 仅作为证据保存，不签名、不广播。
 
 核心文档：
 
@@ -20,6 +20,7 @@ timeout、bounded retry/backoff、rate limiting、UTC/request ID/latency 与采�
 - [Day 3 Note](docs/daily/day_03.md)
 - [Day 4 Note](docs/daily/day_04.md)
 - [Day 5 Note](docs/daily/day_05.md)
+- [Day 6 Note](docs/daily/day_06.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
@@ -45,6 +46,15 @@ Day 5 collector 默认运行两小时、每轮间隔 45 秒。单轮 smoke test 
 ```bash
 uv run python scripts/collect_quotes.py --once
 uv run python scripts/collect_quotes.py
+```
+
+Day 6 RPC URL 只从 `.env.example` 所列环境变量读取。无 Quote 时捕获配置中的三链 head；
+传入 fresh Raw Quote 时，默认只捕获 Quote 涉及的 chain，且 freshness bound 必须显式给出：
+
+```bash
+uv run python scripts/capture_block_context.py
+uv run python scripts/capture_block_context.py \
+  --quote-raw data/raw/lifi/<fresh-quote>.json --max-quote-age 60
 ```
 
 也可使用标准 `venv` 与 `pip install -e '.[dev]'`。
