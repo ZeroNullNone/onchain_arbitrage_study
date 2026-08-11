@@ -178,3 +178,24 @@ def test_run_deadline_bounds_long_retry_after_without_losing_raw(tmp_path: Path)
     assert storage.metrics().request_count == 1
     assert storage.metrics().rate_limited_count == 1
     assert len(list((tmp_path / "raw").rglob("*.json"))) == 1
+
+
+def test_long_retry_after_cools_route_without_blocking_collection(tmp_path: Path) -> None:
+    calls = 0
+
+    async def transport(url: str, headers: dict[str, str], timeout: float) -> HttpResponse:
+        nonlocal calls
+        calls += 1
+        return HttpResponse(429, {"Retry-After": "3600"}, "rate limited")
+
+    storage = _storage(tmp_path)
+    collector = QuoteCollector(storage, _config(), transport=transport)
+    started = time.monotonic()
+    asyncio.run(collector.collect_round({"cooling-route": _request()}))
+    asyncio.run(collector.collect_round({"cooling-route": _request()}))
+
+    assert time.monotonic() - started < 0.5
+    assert calls == 1
+    assert storage.metrics().request_count == 1
+    assert storage.metrics().rate_limited_count == 1
+    assert len(list((tmp_path / "raw").rglob("*.json"))) == 1

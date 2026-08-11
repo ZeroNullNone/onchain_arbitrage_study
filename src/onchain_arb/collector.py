@@ -22,6 +22,7 @@ from onchain_arb.storage import QuoteStorage
 
 API_URL = "https://li.quest/v1/quote"
 SENSITIVE_HEADERS = {"authorization", "proxy-authorization", "set-cookie"}
+MAX_IN_ROUND_RETRY_DELAY_SECONDS = 30.0
 
 
 @dataclass(frozen=True, slots=True)
@@ -80,6 +81,7 @@ class QuoteCollector:
         self.sleep = sleep
         self._rate_limiter = _RateLimiter(config.min_request_interval_seconds)
         self._semaphore = asyncio.Semaphore(config.concurrency)
+        self._route_cooldown_until: dict[str, float] = {}
 
     async def collect_round(
         self,
@@ -122,9 +124,17 @@ class QuoteCollector:
         quote_request: LifiQuoteRequest,
         deadline: float | None,
     ) -> None:
+        cooldown_until = self._route_cooldown_until.get(route_key)
+        if cooldown_until is not None:
+            if cooldown_until > time.monotonic():
+                return
+            del self._route_cooldown_until[route_key]
         for attempt in range(1, self.config.max_attempts + 1):
             outcome, retry_after = await self._attempt(route_key, quote_request)
-            if outcome == "success" or outcome in {
+            if outcome == "success":
+                self._route_cooldown_until.pop(route_key, None)
+                return
+            if outcome in {
                 "unavailable",
                 "http_error",
                 "parse_failure",
@@ -136,6 +146,9 @@ class QuoteCollector:
                 retry_after or 0.0,
                 self.config.backoff_seconds * 2 ** (attempt - 1),
             )
+            if retry_after is not None and delay > MAX_IN_ROUND_RETRY_DELAY_SECONDS:
+                self._route_cooldown_until[route_key] = time.monotonic() + retry_after
+                return
             if deadline is None:
                 await self.sleep(delay)
                 continue

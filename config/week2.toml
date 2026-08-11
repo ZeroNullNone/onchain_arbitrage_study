@@ -1,0 +1,52 @@
+# Frozen Day 7 configuration. Passing the gate authorizes paper research only.
+[gate]
+status = "passed"
+allowed_stage = "week2_paper_research"
+minimum_valid_observations = 200
+observed_valid_observations = 231
+strategy_enabled = true
+
+[research]
+mode = "paper"
+runtime_python = "3.12"
+target_sizes_usd = [100, 500, 1000]
+
+[universe]
+chains = ["base"]
+assets = ["USDC", "WETH"]
+pair = "USDC/WETH"
+reason = "Best-supported same-chain route and existing direct Aerodrome fixture"
+
+[sources]
+discovery_quote = "lifi"
+independent_direct_quote = "required_before_strategy"
+block_context = "evm_rpc"
+
+[decision]
+freshness_window_seconds = "TBD_DAY_16_INSUFFICIENT_GATE"
+minimum_economic_profit_usd = "TBD_DAY_16"
+sign_or_broadcast = false
+
+[[tokens]]
+chain_id = 8453
+symbol = "USDC"
+address = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+decimals = 6
+
+[[tokens]]
+chain_id = 8453
+symbol = "WETH"
+address = "0x4200000000000000000000000000000000000006"
+decimals = 18
+
+[[tokens]]
+chain_id = 42161
+symbol = "USDC"
+address = "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+decimals = 6
+
+[[tokens]]
+chain_id = 42161
+symbol = "WETH"
+address = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+decimals = 18

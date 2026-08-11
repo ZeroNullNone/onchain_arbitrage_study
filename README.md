@@ -4,10 +4,10 @@
 
 ## 当前状态
 
-Day 6 已完成 Base、Arbitrum 与 Optimism 的 read-only RPC Block Context。每次 observation
-先 append 完整 Raw RPC exchanges，再验证 chain ID、reported head 与 exact block，输出 block
-timestamp、base fee、UTC/request ID/latency 与 Raw lineage；也可关联 fresh LI.FI Quote 并记录
-时间偏移。当前没有交易或钱包逻辑；transaction request 仅作为证据保存，不签名、不广播。
+Day 7 Week 1 Data Gate implementation 已完成。QA 对 authoritative dataset 复核 schema、
+decimals、duplicate、missingness、timestamp、Raw/latency coverage、failure/availability 与 size
+sensitivity；231 条 valid observations 已达到 200 条目标，Gate 为 PASS。Week 2 冻结为
+Base USDC/WETH paper-research slice。当前没有交易或钱包逻辑，不签名、不广播。
 
 核心文档：
 
@@ -21,6 +21,8 @@ timestamp、base fee、UTC/request ID/latency 与 Raw lineage；也可关联 fre
 - [Day 4 Note](docs/daily/day_04.md)
 - [Day 5 Note](docs/daily/day_05.md)
 - [Day 6 Note](docs/daily/day_06.md)
+- [Day 7 Note](docs/daily/day_07.md)
+- [Week 1 Data Gate Report](docs/week_1_report.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
@@ -55,6 +57,13 @@ Day 6 RPC URL 只从 `.env.example` 所列环境变量读取。无 Quote 时捕�
 uv run python scripts/capture_block_context.py
 uv run python scripts/capture_block_context.py \
   --quote-raw data/raw/lifi/<fresh-quote>.json --max-quote-age 60
+```
+
+Day 7 QA 会 read-only 重查 DuckDB、Raw lineage 与 frozen config hash：
+
+```bash
+uv run python -m onchain_arb.data_quality \
+  data/normalized/day05_final.duckdb --config config/week2.toml
 ```
 
 也可使用标准 `venv` 与 `pip install -e '.[dev]'`。
