@@ -4,10 +4,11 @@
 
 ## 当前状态
 
-Day 7 Week 1 Data Gate implementation 已完成。QA 对 authoritative dataset 复核 schema、
-decimals、duplicate、missingness、timestamp、Raw/latency coverage、failure/availability 与 size
-sensitivity；231 条 valid observations 已达到 200 条目标，Gate 为 PASS。Week 2 冻结为
-Base USDC/WETH paper-research slice。当前没有交易或钱包逻辑，不签名、不广播。
+Day 8 Same-chain DEX–DEX paper baseline 已完成。冻结范围为 Base USDC/WETH、100 / 500 /
+1,000 USDC exact input、两个 venue；独立 re-quote、minimum output、fee、gas、approval 与全部
+reject reason 均进入 decision evidence。Acceptance fixture 的漏斗为 3 gross candidates → 1
+re-quote survivor → 0 net-positive survivors，证明 scanner 可以明确返回「没有机会」。这不是
+fresh market 盈利结论。当前没有交易或钱包逻辑，不签名、不广播。
 
 核心文档：
 
@@ -22,7 +23,9 @@ Base USDC/WETH paper-research slice。当前没有交易或钱包逻辑，不签
 - [Day 5 Note](docs/daily/day_05.md)
 - [Day 6 Note](docs/daily/day_06.md)
 - [Day 7 Note](docs/daily/day_07.md)
+- [Day 8 Note](docs/daily/day_08.md)
 - [Week 1 Data Gate Report](docs/week_1_report.md)
+- [Day 8 Baseline](docs/day08_baseline.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界

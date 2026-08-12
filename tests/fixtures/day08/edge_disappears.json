@@ -1,0 +1,37 @@
+{
+  "fixture_version": 1,
+  "description": "Deterministic paper-only two-venue scenarios; not live market evidence.",
+  "chain_id": 8453,
+  "pair": "USDC/WETH",
+  "venues": ["aerodrome", "uniswap_v3"],
+  "attempts": [
+    {
+      "candidate_id": "day08-100-edge-disappears",
+      "size_usdc_raw": 100000000,
+      "initial_final_usdc_raw": 100800000,
+      "initial_min_usdc_raw": 100300000,
+      "refreshed_final_usdc_raw": 99900000,
+      "refreshed_min_usdc_raw": 99400000,
+      "gas_usdc_raw_per_leg": 150000,
+      "has_requote": true
+    },
+    {
+      "candidate_id": "day08-500-gas-reject",
+      "size_usdc_raw": 500000000,
+      "initial_final_usdc_raw": 502000000,
+      "initial_min_usdc_raw": 501200000,
+      "refreshed_final_usdc_raw": 501600000,
+      "refreshed_min_usdc_raw": 500400000,
+      "gas_usdc_raw_per_leg": 250000,
+      "has_requote": true
+    },
+    {
+      "candidate_id": "day08-1000-missing-requote",
+      "size_usdc_raw": 1000000000,
+      "initial_final_usdc_raw": 1003500000,
+      "initial_min_usdc_raw": 1002000000,
+      "gas_usdc_raw_per_leg": 400000,
+      "has_requote": false
+    }
+  ]
+}
