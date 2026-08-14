@@ -21,3 +21,7 @@
 - Implement only the current day's acceptance criteria. Put optional work in the backlog instead of expanding scope.
 - Do not prematurely implement dashboards, live signing, flash loans, MEV infrastructure, production deployment, or speculative abstractions.
 - Do not expose secrets from `.env` in commands, logs, tests, fixtures, commits, reports, or chat output.
+
+## Project Git workflow
+
+- Use native `git` for commits and pushes. Do not require GitHub CLI authentication unless the task explicitly needs a pull request, GitHub Actions, or another GitHub API feature.

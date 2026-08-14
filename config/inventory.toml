@@ -1,0 +1,57 @@
+# Frozen Day 10 paper-only inventory policy. Amounts are integer raw units.
+[policy]
+mode = "paper"
+stable_asset_id = "USDC"
+trade_asset_id = "WETH"
+chains = [8453, 42161]
+trade_size_stable_raw = 500000000
+trade_size_asset_raw = 250000000000000000
+max_leg_skew_ms = 1000
+capital_lock_hours = "2"
+sign_or_broadcast = false
+
+# accounting_price is a Decimal string in USDC per whole token. It is a frozen
+# capital-occupancy mark, not a live or fallback market price.
+[[positions]]
+chain_id = 8453
+asset_id = "USDC"
+address = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+decimals = 6
+balance_raw = 2000000000
+target_minimum_raw = 1500000000
+target_maximum_raw = 2500000000
+max_imbalance_raw = 1500000000
+accounting_price = "1"
+
+[[positions]]
+chain_id = 8453
+asset_id = "WETH"
+address = "0x4200000000000000000000000000000000000006"
+decimals = 18
+balance_raw = 1000000000000000000
+target_minimum_raw = 500000000000000000
+target_maximum_raw = 1500000000000000000
+max_imbalance_raw = 1000000000000000000
+accounting_price = "2000"
+
+[[positions]]
+chain_id = 42161
+asset_id = "USDC"
+address = "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+decimals = 6
+balance_raw = 2000000000
+target_minimum_raw = 1500000000
+target_maximum_raw = 2500000000
+max_imbalance_raw = 1500000000
+accounting_price = "1"
+
+[[positions]]
+chain_id = 42161
+asset_id = "WETH"
+address = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+decimals = 18
+balance_raw = 1000000000000000000
+target_minimum_raw = 500000000000000000
+target_maximum_raw = 1500000000000000000
+max_imbalance_raw = 1000000000000000000
+accounting_price = "2000"
