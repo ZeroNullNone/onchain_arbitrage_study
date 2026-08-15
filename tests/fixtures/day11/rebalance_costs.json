@@ -1,0 +1,91 @@
+{
+  "mode": "deterministic_paper_assumption",
+  "source": "day11_acceptance_fixture",
+  "observed_at": "2026-08-15T02:00:00Z",
+  "observations": [
+    {
+      "request": {
+        "request_id": "day11-paper-0_25",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 250000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 7000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-0_25-2",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 250000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 7000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-0_25-3",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 250000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 7000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-0_25-4",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 250000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 7000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-0_5",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 500000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 9000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-0_5-2",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 500000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 9000000
+      },
+      "latency_ms": "0"
+    },
+    {
+      "request": {
+        "request_id": "day11-paper-1",
+        "transfer_token": "BASE_WETH",
+        "transfer_amount_raw": 1000000000000000000
+      },
+      "response": {
+        "cost_token": "BASE_USDC",
+        "cost_amount_raw": 16000000
+      },
+      "latency_ms": "0"
+    }
+  ]
+}

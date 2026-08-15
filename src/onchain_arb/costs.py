@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from decimal import Decimal
 from typing import Iterable
 
-from onchain_arb.models import CostItem, CostScope, TokenDelta, TokenRef
+from onchain_arb.models import CostItem, CostScope, TokenAmount, TokenDelta, TokenRef
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,6 +47,43 @@ class CrossChainCostEvaluation:
     @property
     def is_complete(self) -> bool:
         return not self.missing_cost_kinds
+
+
+@dataclass(frozen=True, slots=True)
+class InventoryCycleCostEvaluation:
+    """The complete PnL boundary after inventory restoration."""
+
+    accounting_token: TokenRef
+    local_trade_pnl: Decimal
+    rebalance_cost: Decimal
+    inventory_cycle_pnl: Decimal
+
+
+class InventoryCycleCostLedger:
+    """Deduct explicit rebalance amounts from already-net local trade PnL once."""
+
+    def __init__(self, *, accounting_token: TokenRef) -> None:
+        self._accounting_token = accounting_token
+
+    def evaluate(
+        self,
+        *,
+        local_trade_pnl: TokenDelta,
+        rebalance_costs: Iterable[TokenAmount],
+    ) -> InventoryCycleCostEvaluation:
+        if local_trade_pnl.token != self._accounting_token:
+            raise ValueError("local trade PnL does not match the accounting token")
+        costs = tuple(rebalance_costs)
+        if any(cost.token != self._accounting_token for cost in costs):
+            raise ValueError("rebalance costs do not match the accounting token")
+        local = local_trade_pnl.decimal_delta
+        total = sum((cost.decimal_amount for cost in costs), start=Decimal(0))
+        return InventoryCycleCostEvaluation(
+            accounting_token=self._accounting_token,
+            local_trade_pnl=local,
+            rebalance_cost=total,
+            inventory_cycle_pnl=local - total,
+        )
 
 
 class CostLedger:

@@ -4,12 +4,12 @@
 
 ## 当前状态
 
-Day 10 Cross-chain Inventory Model 已完成。已建立 Base / Arbitrum、USDC / WETH 的 paper-only
-virtual balance sheet，输出两腿 condition lock time、Trade PnL、Inventory Change、Capital
-Occupied、Capital-hour Return 与 Required Initial Inventory，并对缺失成本、stale leg、余额不足和
-maximum imbalance 显式拒绝。Day 9 没有 fresh tradable cross-chain edge，因此 Day 10 数值只用于
-deterministic accounting acceptance，不是 live market evidence。当前没有交易或钱包逻辑，不签名、
-不广播。
+Day 11 Rebalance Economics 已完成。已在 Day 10 virtual inventory delta 上实现 Immediate、
+Threshold-based、Batch 三种 deterministic paper policy，输出完整 Cycle PnL、rebalance frequency、
+break-even cost、capacity curve 与 inventory imbalance distribution。Immediate worked example 中
+local Trade PnL 为正而 Cycle PnL 为负，证明 cross-chain strategy 不能按单笔 local PnL 判断。
+所有数值均为 paper acceptance assumptions，不是 live market evidence。当前没有交易或钱包逻辑，
+不签名、不广播。
 
 核心文档：
 
@@ -27,10 +27,12 @@ deterministic accounting acceptance，不是 live market evidence。当前没有
 - [Day 8 Note](docs/daily/day_08.md)
 - [Day 9 Note](docs/daily/day_09.md)
 - [Day 10 Note](docs/daily/day_10.md)
+- [Day 11 Note](docs/daily/day_11.md)
 - [Week 1 Data Gate Report](docs/week_1_report.md)
 - [Day 8 Baseline](docs/day08_baseline.md)
 - [Day 9 Route Dispersion](docs/day09_route_dispersion.md)
 - [Day 10 Inventory Model](docs/day10_inventory_model.md)
+- [Day 11 Rebalance Economics](docs/day11_rebalance.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
