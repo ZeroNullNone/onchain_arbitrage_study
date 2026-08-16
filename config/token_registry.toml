@@ -1,0 +1,82 @@
+schema_version = 1
+mode = "paper"
+reviewed_at = "2026-08-16T00:00:00Z"
+
+# Haircuts are frozen Day 12 paper-policy assumptions, not live prices or legal
+# conclusions. Symbols are display-only; chain_id + contract_address is identity.
+
+[[tokens]]
+chain_id = 8453
+contract_address = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+symbol = "USDC"
+decimals = 6
+issuer = "Circle Internet Financial"
+classification = "canonical"
+redemption_path = "Eligible Circle Mint customer redemption of native USDC for USD under Circle terms"
+pause_capability = true
+blacklist_capability = true
+upgradeability = true
+haircut_bps = 25
+excluded = false
+decision_reason = "Keep in the paper universe with an issuer-control and redemption-access haircut"
+source_urls = [
+  "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+  "https://github.com/circlefin/stablecoin-evm",
+]
+
+[[tokens]]
+chain_id = 8453
+contract_address = "0x4200000000000000000000000000000000000006"
+symbol = "WETH"
+decimals = 18
+issuer = "Base protocol WETH9 predeploy"
+classification = "wrapped"
+redemption_path = "Call WETH9 withdraw to unwrap one-for-one into native ETH on Base"
+pause_capability = false
+blacklist_capability = false
+upgradeability = false
+haircut_bps = 5
+excluded = false
+decision_reason = "Keep in the paper universe with a small frozen wrapper-contract haircut"
+source_urls = [
+  "https://docs.base.org/base-chain/network-information/base-contracts",
+  "https://basescan.org/address/0x4200000000000000000000000000000000000006#code",
+]
+
+[[tokens]]
+chain_id = 42161
+contract_address = "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+symbol = "USDC"
+decimals = 6
+issuer = "Circle Internet Financial"
+classification = "canonical"
+redemption_path = "Eligible Circle Mint customer redemption of native USDC for USD under Circle terms"
+pause_capability = true
+blacklist_capability = true
+upgradeability = true
+haircut_bps = 25
+excluded = false
+decision_reason = "Keep in the paper universe with an issuer-control and redemption-access haircut"
+source_urls = [
+  "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+  "https://github.com/circlefin/stablecoin-evm",
+]
+
+[[tokens]]
+chain_id = 42161
+contract_address = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+symbol = "WETH"
+decimals = 18
+issuer = "Arbitrum canonical token bridge"
+classification = "bridged"
+redemption_path = "Withdraw through the canonical Arbitrum WETH gateway to Ethereum WETH, then unwrap to ETH"
+pause_capability = false
+blacklist_capability = false
+upgradeability = true
+haircut_bps = 50
+excluded = false
+decision_reason = "Keep in the paper universe with the largest haircut because bridge and proxy risks are additional basis dependencies"
+source_urls = [
+  "https://arbiscan.io/address/0x82af49447d8a07e3bd95bd0d56f35241523fbab1#code",
+  "https://github.com/OffchainLabs/token-bridge-contracts",
+]
