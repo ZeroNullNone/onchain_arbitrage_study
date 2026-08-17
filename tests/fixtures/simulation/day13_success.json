@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "source": "eth_call",
+  "method": "eth_call",
+  "request_id": "day13-sim-success",
+  "candidate_id": "day13-day13-usdc-weth-100",
+  "observed_at": "2026-08-16T10:01:00Z",
+  "chain_id": 8453,
+  "block_number": "0x12d68742",
+  "request": {
+    "from": "0x000000000000000000000000000000000000dead",
+    "to": "0x1111111111111111111111111111111111111111",
+    "data": "0x1234abcd",
+    "value": "0x0",
+    "gas": "0x3d08",
+    "gasPrice": "0x3b9aca00"
+  },
+  "response": {
+    "status": 200,
+    "request_id": "day13-sim-success",
+    "body": {
+      "jsonrpc": "2.0",
+      "id": "day13-sim-success",
+      "result": {
+        "success": true,
+        "gasUsed": "0x4e20",
+        "revertReason": null,
+        "balanceChanges": [
+          {
+            "account": "0x000000000000000000000000000000000000dead",
+            "token": {
+              "chainId": 8453,
+              "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+              "symbol": "USDC",
+              "decimals": 6
+            },
+            "delta": "-100000000"
+          },
+          {
+            "account": "0x000000000000000000000000000000000000dead",
+            "token": {
+              "chainId": 8453,
+              "address": "0x4200000000000000000000000000000000000006",
+              "symbol": "WETH",
+              "decimals": 18
+            },
+            "delta": "52000000000000000000"
+          }
+        ],
+        "output": {
+          "token": {
+            "chainId": 8453,
+            "address": "0x4200000000000000000000000000000000000006",
+            "symbol": "WETH",
+            "decimals": 18
+          },
+          "raw": "52000000000000000000"
+        },
+        "allowance": {
+          "required": "0x0",
+          "available": "0x0"
+        },
+        "outputAccount": "0x000000000000000000000000000000000000dead"
+      }
+    }
+  }
+}

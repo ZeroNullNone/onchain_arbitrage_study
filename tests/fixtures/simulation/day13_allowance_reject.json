@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "source": "eth_call",
+  "method": "eth_call",
+  "request_id": "day13-sim-allowance",
+  "candidate_id": "day13-day13-usdc-weth-100",
+  "observed_at": "2026-08-16T10:03:00Z",
+  "chain_id": 8453,
+  "block_number": "0x12d68744",
+  "request": {
+    "from": "0x000000000000000000000000000000000000dead",
+    "to": "0x1111111111111111111111111111111111111111",
+    "data": "0x1234abcd",
+    "value": "0x0",
+    "gas": "0x3d08",
+    "gasPrice": "0x3b9aca00"
+  },
+  "response": {
+    "status": 200,
+    "request_id": "day13-sim-allowance",
+    "body": {
+      "jsonrpc": "2.0",
+      "id": "day13-sim-allowance",
+      "result": {
+        "success": false,
+        "gasUsed": "0x4e20",
+        "revertReason": "ERC20: transfer amount exceeds allowance",
+        "balanceChanges": [
+          {
+            "account": "0x000000000000000000000000000000000000dead",
+            "token": {
+              "chainId": 8453,
+              "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+              "symbol": "USDC",
+              "decimals": 6
+            },
+            "delta": "0"
+          }
+        ],
+        "allowance": {
+          "required": "100000000",
+          "available": "1000000",
+          "token": {
+            "chainId": 8453,
+            "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+            "symbol": "USDC",
+            "decimals": 6
+          }
+        }
+      }
+    }
+  }
+}
