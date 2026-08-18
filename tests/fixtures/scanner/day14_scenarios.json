@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "description": "Day 14 scanner acceptance scenarios covering all candidate states and gate transitions",
+  "generated_at": "2026-08-17T08:00:00Z",
+  "scenarios": [
+    {
+      "candidate_id": "sc-01-paper-ready",
+      "type": "same_chain",
+      "size_usdc": 1000,
+      "venue_buy": "aerodrome",
+      "venue_sell": "uniswap_v3",
+      "initial_output_usdc": 1005.5,
+      "refreshed_output_usdc": 1004.8,
+      "refreshed_min_output_usdc": 1003.5,
+      "gas_per_leg_usdc": 0.25,
+      "sim_status": "success",
+      "expected_state": "PAPER_READY"
+    },
+    {
+      "candidate_id": "sc-02-requote-failed-missing",
+      "type": "same_chain",
+      "size_usdc": 500,
+      "venue_buy": "aerodrome",
+      "venue_sell": "uniswap_v3",
+      "initial_output_usdc": 504.0,
+      "has_requote": false,
+      "expected_state": "REQUOTE_FAILED"
+    },
+    {
+      "candidate_id": "sc-03-net-negative",
+      "type": "same_chain",
+      "size_usdc": 100,
+      "venue_buy": "aerodrome",
+      "venue_sell": "uniswap_v3",
+      "initial_output_usdc": 100.4,
+      "refreshed_output_usdc": 100.2,
+      "refreshed_min_output_usdc": 100.1,
+      "gas_per_leg_usdc": 0.35,
+      "expected_state": "NET_NEGATIVE"
+    },
+    {
+      "candidate_id": "sc-04-sim-failed-revert",
+      "type": "same_chain",
+      "size_usdc": 1000,
+      "venue_buy": "aerodrome",
+      "venue_sell": "uniswap_v3",
+      "initial_output_usdc": 1008.0,
+      "refreshed_output_usdc": 1007.0,
+      "refreshed_min_output_usdc": 1005.0,
+      "gas_per_leg_usdc": 0.25,
+      "sim_status": "revert",
+      "expected_state": "SIMULATION_FAILED"
+    },
+    {
+      "candidate_id": "sc-05-sim-failed-allowance",
+      "type": "same_chain",
+      "size_usdc": 1000,
+      "venue_buy": "aerodrome",
+      "venue_sell": "uniswap_v3",
+      "initial_output_usdc": 1008.0,
+      "refreshed_output_usdc": 1007.0,
+      "refreshed_min_output_usdc": 1005.0,
+      "gas_per_leg_usdc": 0.25,
+      "sim_status": "allowance_reject",
+      "expected_state": "SIMULATION_FAILED"
+    },
+    {
+      "candidate_id": "cc-01-paper-ready",
+      "type": "cross_chain",
+      "cheap_chain_id": 8453,
+      "expensive_chain_id": 42161,
+      "stable_asset": "USDC",
+      "trade_asset": "WETH",
+      "buy_input_usdc": 1000,
+      "sell_min_output_usdc": 1008,
+      "atomic_costs_usdc": 1.5,
+      "inventory_status": "sufficient",
+      "expected_state": "PAPER_READY"
+    },
+    {
+      "candidate_id": "cc-02-inventory-blocked",
+      "type": "cross_chain",
+      "cheap_chain_id": 8453,
+      "expensive_chain_id": 42161,
+      "stable_asset": "USDC",
+      "trade_asset": "WETH",
+      "buy_input_usdc": 1000,
+      "sell_min_output_usdc": 1008,
+      "atomic_costs_usdc": 1.5,
+      "inventory_status": "insufficient_balance",
+      "expected_state": "INVENTORY_BLOCKED"
+    }
+  ]
+}
