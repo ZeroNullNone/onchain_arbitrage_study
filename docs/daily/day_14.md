@@ -21,6 +21,21 @@
 - 新增测试夹具 `tests/fixtures/scanner/day14_scenarios.json` 与验收测试 `tests/test_scanner.py`（92 passed）。
 - 新增文档 `docs/day14_scanner.md`。
 
+## 核心学习与量化思维
+
+1. **套利研究的本质是“证伪漏斗（Falsification Funnel）”，而非“寻找利润”**：
+   - 链上最容易出现的错误是“看到报价有价差就认为存在套利”，真实环境中 99% 的毛价差都会在二次询价（Re-quote）、扣费（Gas/Approval）、库存失衡或仿真 Revert 阶段被剔除。
+   - 建立确定性状态机分层记录 Reject 原因，是避免虚假信号和不可行策略的核心工程手段。
+2. **单一所有权账本（Single-owner Cost Ledger）与绝对精度**：
+   - 经济决策严禁使用浮点数，底层代币采用不可分割的整数最小单位（Raw integer units）+ `Decimal`。
+   - 成本只能在账本中被扣减一次，对内含费用（Included costs）与外部原子/周期费用做严格区隔，杜绝重复扣费。
+3. **链上仿真（Simulation）是执行前的真实性底线**：
+   - 链下 Aggregator 的报价只是预期承诺，`eth_call` 仿真才能在指定区块状态下验证真实的余额变化、Allowance 满足度与 Revert 原因；无仿真证据绝不标记为可执行。
+4. **小样本自律与稀疏熔断（Sparse Sample Guard）**：
+   - 当有效样本量 $N < 20$ 时，系统必须显式标记 `is_sparse = True`，禁止在此阶段做任何外推盈利性宣称，避免过度拟合与统计幻觉。
+5. **100% 原始证据可审计性（Raw Lineage）**：
+   - 每一个派生决策都必须包含指向不可变原始请求/响应的 `raw_refs`，保证回测、排错与审计时具备完整的数据血统。
+
 ## Evidence 与验证
 
 - Pipeline & Models: `src/onchain_arb/scanner.py`, `src/onchain_arb/decision.py`
