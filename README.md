@@ -4,12 +4,12 @@
 
 ## 当前状态
 
-Day 11 Rebalance Economics 已完成。已在 Day 10 virtual inventory delta 上实现 Immediate、
-Threshold-based、Batch 三种 deterministic paper policy，输出完整 Cycle PnL、rebalance frequency、
-break-even cost、capacity curve 与 inventory imbalance distribution。Immediate worked example 中
-local Trade PnL 为正而 Cycle PnL 为负，证明 cross-chain strategy 不能按单笔 local PnL 判断。
-所有数值均为 paper acceptance assumptions，不是 live market evidence。当前没有交易或钱包逻辑，
-不签名、不广播。
+Day 15 Hypothesis Ranking 已完成。基于 7 维度标准化评分卡（权重 25/20/15/15/10/10/5），
+综合评估了前期建立的真实数据、拒绝漏斗与模拟证据：
+- **H1（跨链预置库存套利）** 获得 75 分，正式当选为 **PRIMARY** 策略主线，进入 Day 16 Strategy Spec 制定；
+- **H2（同链 DEX–DEX 公开往返基线）** 获得 51 分，作为 **BACKUP / 负对照基准** 保留，用于持续审计数据质量与拒绝虚假信号；
+- **H3（聚合器跨链路由离散度）** 获得 26 分，因桥时延、费率侵蚀与不可锁定性被 **正式 KILL**。
+所有数值与证据均严格可追溯，保持 Read-only / Simulation-only，不签名、不广播。
 
 核心文档：
 
@@ -28,11 +28,19 @@ local Trade PnL 为正而 Cycle PnL 为负，证明 cross-chain strategy 不能�
 - [Day 9 Note](docs/daily/day_09.md)
 - [Day 10 Note](docs/daily/day_10.md)
 - [Day 11 Note](docs/daily/day_11.md)
+- [Day 12 Note](docs/daily/day_12.md)
+- [Day 13 Note](docs/daily/day_13.md)
+- [Day 14 Note](docs/daily/day_14.md)
+- [Day 15 Note](docs/daily/day_15.md)
 - [Week 1 Data Gate Report](docs/week_1_report.md)
 - [Day 8 Baseline](docs/day08_baseline.md)
 - [Day 9 Route Dispersion](docs/day09_route_dispersion.md)
 - [Day 10 Inventory Model](docs/day10_inventory_model.md)
 - [Day 11 Rebalance Economics](docs/day11_rebalance.md)
+- [Day 12 Token Risk & Identity](docs/day12_token_risk.md)
+- [Day 13 Transaction Simulation](docs/day13_simulation.md)
+- [Day 14 Scanner v1](docs/day14_scanner.md)
+- [Day 15 Hypothesis Ranking](docs/day15_hypothesis_ranking.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界
