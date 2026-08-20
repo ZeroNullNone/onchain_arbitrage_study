@@ -4,11 +4,11 @@
 
 ## 当前状态
 
-Day 15 Hypothesis Ranking 已完成。基于 7 维度标准化评分卡（权重 25/20/15/15/10/10/5），
-综合评估了前期建立的真实数据、拒绝漏斗与模拟证据：
-- **H1（跨链预置库存套利）** 获得 75 分，正式当选为 **PRIMARY** 策略主线，进入 Day 16 Strategy Spec 制定；
-- **H2（同链 DEX–DEX 公开往返基线）** 获得 51 分，作为 **BACKUP / 负对照基准** 保留，用于持续审计数据质量与拒绝虚假信号；
-- **H3（聚合器跨链路由离散度）** 获得 26 分，因桥时延、费率侵蚀与不可锁定性被 **正式 KILL**。
+Day 16 Primary Strategy Specification 已完成。基于 Day 15 确立的 H1（跨链预置库存套利）主线：
+- 发布了无歧义的策略规范文档 [`docs/strategy_spec.md`](docs/strategy_spec.md) 与冻结配置文件 [`config/strategy.toml`](config/strategy.toml)；
+- 确立并形式化了五元分解的 **Required Edge** 门限公式（已知成本 + 成本不确定性缓冲 + 时延劣变缓冲 + 再平衡摊销缓冲 + 最低经济利润）；
+- 实现了策略层解析器与决策评估引擎 [`src/onchain_arb/strategy.py`](src/onchain_arb/strategy.py)，并在加载期内置严格的 Anti-TBD 校验；
+- 建立了 Golden Examples 验收单测套件 [`tests/test_strategy_spec_examples.py`](tests/test_strategy_spec_examples.py)（全库 112 项测试全部通过）。
 所有数值与证据均严格可追溯，保持 Read-only / Simulation-only，不签名、不广播。
 
 核心文档：
@@ -32,6 +32,7 @@ Day 15 Hypothesis Ranking 已完成。基于 7 维度标准化评分卡（权重
 - [Day 13 Note](docs/daily/day_13.md)
 - [Day 14 Note](docs/daily/day_14.md)
 - [Day 15 Note](docs/daily/day_15.md)
+- [Day 16 Note](docs/daily/day_16.md)
 - [Week 1 Data Gate Report](docs/week_1_report.md)
 - [Day 8 Baseline](docs/day08_baseline.md)
 - [Day 9 Route Dispersion](docs/day09_route_dispersion.md)
@@ -41,6 +42,7 @@ Day 15 Hypothesis Ranking 已完成。基于 7 维度标准化评分卡（权重
 - [Day 13 Transaction Simulation](docs/day13_simulation.md)
 - [Day 14 Scanner v1](docs/day14_scanner.md)
 - [Day 15 Hypothesis Ranking](docs/day15_hypothesis_ranking.md)
+- [Day 16 Strategy Spec](docs/strategy_spec.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界

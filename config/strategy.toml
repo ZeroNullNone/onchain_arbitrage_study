@@ -1,0 +1,70 @@
+# Frozen Day 16 Primary Strategy Specification Configuration.
+# Operating Mode: Paper-only / Read-only / Simulation-only. No live signing or broadcast.
+# All parameters are frozen, validated, and free of placeholders or TBD markers.
+
+schema_version = 1
+reviewed_at = "2026-08-17T00:00:00Z"
+
+[primary]
+strategy_id = "H1_CROSS_CHAIN_INVENTORY"
+name = "Cross-Chain Pre-Positioned Inventory Arbitrage"
+mode = "paper"
+chains = [8453, 42161]
+stable_asset_id = "USDC"
+trade_asset_id = "WETH"
+target_sizes_usd = [100, 500, 1000]
+rebalance_threshold_usd = 500
+max_inventory_imbalance_usd = 1500
+
+[primary.timing]
+max_quote_age_ms = 10000
+max_leg_skew_ms = 1000
+requote_window_ms = 3000
+dedup_window_seconds = 60.0
+
+[primary.threshold]
+# Required Edge = Known Execution Cost + Cost Uncertainty Buffer + Latency Deterioration Buffer + Inventory/Rebalance Buffer + Minimum Economic Profit
+cost_uncertainty_pct = "0.20"
+cost_uncertainty_floor_usd = "0.10"
+latency_buffer_bps = "10.0"
+rebalance_buffer_usd = "0.40"
+min_economic_profit_usd = "0.50"
+
+[primary.kill_metrics]
+max_consecutive_losses = 3
+min_requote_survival_rate = "0.10"
+max_balance_drift_pct = "0.50"
+max_gas_multiplier = "5.0"
+
+[[primary.tokens]]
+chain_id = 8453
+contract_address = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+symbol = "USDC"
+decimals = 6
+
+[[primary.tokens]]
+chain_id = 8453
+contract_address = "0x4200000000000000000000000000000000000006"
+symbol = "WETH"
+decimals = 18
+
+[[primary.tokens]]
+chain_id = 42161
+contract_address = "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+symbol = "USDC"
+decimals = 6
+
+[[primary.tokens]]
+chain_id = 42161
+contract_address = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+symbol = "WETH"
+decimals = 18
+
+[backup]
+strategy_id = "H2_SAME_CHAIN_BASELINE"
+name = "Same-Chain DEX-DEX Public Round Trip (Negative Control Baseline)"
+mode = "paper_negative_control"
+chain_id = 8453
+pair = "USDC/WETH"
+venues = ["aerodrome", "uniswap_v3"]
+read_only_description = "Read-only baseline monitoring public DEX round trips on Base to audit fee models and verify rejection of MEV-dominated opportunities."
