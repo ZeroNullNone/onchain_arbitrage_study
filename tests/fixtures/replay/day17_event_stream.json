@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source": "captured_replay_evidence",
+  "captured_at": "2026-08-17T08:10:00Z",
+  "initial_inventory": [
+    {"chain_id": 8453, "asset_id": "USDC", "raw_amount": 2000000000},
+    {"chain_id": 42161, "asset_id": "USDC", "raw_amount": 2000000000}
+  ],
+  "snapshots": [
+    {
+      "candidate_id": "fixture-001",
+      "opportunity_key": "BASE_ARB_USDC_WETH",
+      "direction": "BUY_BASE_SELL_ARBITRUM",
+      "accounting_decimals": 6,
+      "target_size_raw": 100000000,
+      "initial_gross_edge_raw": 4000000,
+      "capital_occupied_raw": 4000000000,
+      "capital_lock_ms": 3600000,
+      "detected": {
+        "request_id": "req-fixture-001-detected",
+        "raw_ref": "raw://day17/fixture-001/detected",
+        "source": "captured_quote",
+        "observed_at": "2026-08-17T08:00:00Z",
+        "arrived_at": "2026-08-17T08:00:00.100Z",
+        "latency_ms": 100
+      },
+      "requote": {
+        "request_id": "req-fixture-001-requote",
+        "raw_ref": "raw://day17/fixture-001/requote",
+        "source": "captured_requote",
+        "observed_at": "2026-08-17T08:00:01Z",
+        "arrived_at": "2026-08-17T08:00:01.250Z",
+        "latency_ms": 250
+      },
+      "cost_ledger": {
+        "gross_edge_raw": 3000000,
+        "costs": [
+          {"kind": "base_gas", "raw_amount": 400000},
+          {"kind": "arb_gas", "raw_amount": 400000}
+        ],
+        "required_cost_kinds": ["base_gas", "arb_gas"],
+        "cost_uncertainty_buffer_raw": 100000,
+        "latency_deterioration_buffer_raw": 500000,
+        "inventory_rebalance_buffer_raw": 400000,
+        "minimum_economic_profit_raw": 500000
+      },
+      "simulation": {
+        "request_id": "req-fixture-001-simulation",
+        "raw_ref": "raw://day17/fixture-001/simulation",
+        "source": "captured_eth_call",
+        "observed_at": "2026-08-17T08:00:02Z",
+        "arrived_at": "2026-08-17T08:00:02.400Z",
+        "latency_ms": 400,
+        "success": true,
+        "minimum_output_satisfied": true
+      },
+      "inventory_deltas": [
+        {"chain_id": 8453, "asset_id": "USDC", "raw_delta": -100000000},
+        {"chain_id": 42161, "asset_id": "USDC", "raw_delta": 103000000}
+      ]
+    },
+    {
+      "candidate_id": "fixture-002",
+      "opportunity_key": "BASE_ARB_USDC_WETH",
+      "direction": "BUY_BASE_SELL_ARBITRUM",
+      "accounting_decimals": 6,
+      "target_size_raw": 100000000,
+      "initial_gross_edge_raw": 3500000,
+      "capital_occupied_raw": 4000000000,
+      "capital_lock_ms": 3600000,
+      "detected": {
+        "request_id": "req-fixture-002-detected",
+        "raw_ref": "raw://day17/fixture-002/detected",
+        "source": "captured_quote",
+        "observed_at": "2026-08-17T08:00:20Z",
+        "arrived_at": "2026-08-17T08:00:20.150Z",
+        "latency_ms": 150
+      },
+      "requote": {
+        "request_id": "req-fixture-002-requote",
+        "raw_ref": "raw://day17/fixture-002/requote",
+        "source": "captured_requote",
+        "observed_at": "2026-08-17T08:00:21Z",
+        "arrived_at": "2026-08-17T08:00:21.300Z",
+        "latency_ms": 300
+      },
+      "cost_ledger": {
+        "gross_edge_raw": 2000000,
+        "costs": [
+          {"kind": "base_gas", "raw_amount": 400000},
+          {"kind": "arb_gas", "raw_amount": 400000}
+        ],
+        "required_cost_kinds": ["base_gas", "arb_gas"],
+        "cost_uncertainty_buffer_raw": 100000,
+        "latency_deterioration_buffer_raw": 500000,
+        "inventory_rebalance_buffer_raw": 400000,
+        "minimum_economic_profit_raw": 500000
+      },
+      "simulation": null,
+      "inventory_deltas": [
+        {"chain_id": 8453, "asset_id": "USDC", "raw_delta": -100000000},
+        {"chain_id": 42161, "asset_id": "USDC", "raw_delta": 102000000}
+      ]
+    }
+  ]
+}

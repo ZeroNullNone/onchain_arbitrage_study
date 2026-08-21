@@ -4,11 +4,12 @@
 
 ## 当前状态
 
-Day 16 Primary Strategy Specification 已完成。基于 Day 15 确立的 H1（跨链预置库存套利）主线：
-- 发布了无歧义的策略规范文档 [`docs/strategy_spec.md`](docs/strategy_spec.md) 与冻结配置文件 [`config/strategy.toml`](config/strategy.toml)；
-- 确立并形式化了五元分解的 **Required Edge** 门限公式（已知成本 + 成本不确定性缓冲 + 时延劣变缓冲 + 再平衡摊销缓冲 + 最低经济利润）；
-- 实现了策略层解析器与决策评估引擎 [`src/onchain_arb/strategy.py`](src/onchain_arb/strategy.py)，并在加载期内置严格的 Anti-TBD 校验；
-- 建立了 Golden Examples 验收单测套件 [`tests/test_strategy_spec_examples.py`](tests/test_strategy_spec_examples.py)（全库 112 项测试全部通过）。
+Day 17 Event-time Replay 已完成。基于 Day 16 冻结的 H1（跨链预置库存套利）策略：
+- 实现 [`src/onchain_arb/replay.py`](src/onchain_arb/replay.py)，只使用当时已到达的 captured evidence，不使用 OHLC；
+- 使用实际 latency、Re-quote minimum output、完整 Cost Ledger 与 Simulation evidence 执行 paper entry gate；
+- 将连续 snapshots 聚为 Opportunity Clusters，并追踪 Virtual Inventory 与 Rebalance lifecycle；
+- 输出 Survival、Net Edge p05/p50/p95、Decay、Lifetime、Capacity、Capital-hour Return 与 Worst Case；
+- 建立未来数据泄漏与 Raw fixture 验收套件 [`tests/test_replay.py`](tests/test_replay.py)。
 所有数值与证据均严格可追溯，保持 Read-only / Simulation-only，不签名、不广播。
 
 核心文档：
@@ -33,6 +34,7 @@ Day 16 Primary Strategy Specification 已完成。基于 Day 15 确立的 H1（�
 - [Day 14 Note](docs/daily/day_14.md)
 - [Day 15 Note](docs/daily/day_15.md)
 - [Day 16 Note](docs/daily/day_16.md)
+- [Day 17 Note](docs/daily/day_17.md)
 - [Week 1 Data Gate Report](docs/week_1_report.md)
 - [Day 8 Baseline](docs/day08_baseline.md)
 - [Day 9 Route Dispersion](docs/day09_route_dispersion.md)
@@ -43,6 +45,7 @@ Day 16 Primary Strategy Specification 已完成。基于 Day 15 确立的 H1（�
 - [Day 14 Scanner v1](docs/day14_scanner.md)
 - [Day 15 Hypothesis Ranking](docs/day15_hypothesis_ranking.md)
 - [Day 16 Strategy Spec](docs/strategy_spec.md)
+- [Day 17 Event-time Replay](docs/day17_replay.md)
 - [LI.FI Quote Schema](docs/schema/lifi_quote.md)
 
 ## 安全边界

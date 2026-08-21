@@ -8,6 +8,10 @@
 - Lean on the dependencies already in the project before writing your own implementation or adding packages. Do not assume a library lacks a capability without checking its documentation and types.
 - Make architectural decisions for the long term. Do not accept a stopgap that only works for now and is meant to be replaced later.
 
+## Daily documentation
+
+- Every completed daily note in `docs/daily/` must include a concise `学习总结` section that captures the reusable concepts, reasoning lessons, and interpretation pitfalls from that day's work. Keep it suitable for future review, and clearly distinguish implementation evidence from empirical or profitability claims.
+
 ## On-chain research safety and evidence rules
 
 - Operate read-only, simulation-only, and paper-only by default. Do not sign or broadcast transactions.
