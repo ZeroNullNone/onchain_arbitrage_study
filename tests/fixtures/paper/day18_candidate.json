@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source": "captured_paper_evidence",
+  "captured_at": "2026-08-18T08:10:00Z",
+  "initial_balances": [
+    {"chain_id": 8453, "asset_id": "USDC", "raw_amount": 2000000000},
+    {"chain_id": 42161, "asset_id": "USDC", "raw_amount": 2000000000}
+  ],
+  "initial_allowances": [
+    {"chain_id": 8453, "asset_id": "USDC", "spender": "aerodrome-router", "raw_amount": 500000000}
+  ],
+  "candidates": [
+    {
+      "candidate_id": "paper-8f45421c236d6273bcc88ec9",
+      "opportunity_key": "BASE_ARB_USDC_WETH",
+      "direction": "BUY_BASE_SELL_ARBITRUM",
+      "target_size_raw": 100000000,
+      "original_route": "base:aerodrome-v2|arbitrum:camelot-v3",
+      "refreshed_route": "base:aerodrome-v2|arbitrum:camelot-v3",
+      "expires_at": "2026-08-18T08:00:10Z",
+      "ledger_ref": "derived://day18/paper-8f45421c236d6273bcc88ec9/ledger",
+      "detected": {
+        "request_id": "req-day18-001-detected",
+        "raw_ref": "raw://day18/paper-001/detected",
+        "source": "captured_quote",
+        "observed_at": "2026-08-18T08:00:00Z",
+        "arrived_at": "2026-08-18T08:00:00.100Z",
+        "latency_ms": 100
+      },
+      "requote": {
+        "request_id": "req-day18-001-requote",
+        "raw_ref": "raw://day18/paper-001/requote",
+        "source": "captured_requote",
+        "observed_at": "2026-08-18T08:00:01Z",
+        "arrived_at": "2026-08-18T08:00:01.250Z",
+        "latency_ms": 250
+      },
+      "cost_ledger": {
+        "gross_edge_raw": 3000000,
+        "costs": [
+          {"kind": "base_gas", "raw_amount": 400000},
+          {"kind": "arb_gas", "raw_amount": 400000}
+        ],
+        "required_cost_kinds": ["base_gas", "arb_gas"],
+        "cost_uncertainty_buffer_raw": 100000,
+        "latency_deterioration_buffer_raw": 500000,
+        "inventory_rebalance_buffer_raw": 400000,
+        "minimum_economic_profit_raw": 500000
+      },
+      "allowance_requirements": [
+        {"chain_id": 8453, "asset_id": "USDC", "spender": "aerodrome-router", "raw_amount": 100000000}
+      ],
+      "simulation_required": true,
+      "simulation": {
+        "request_id": "req-day18-001-simulation",
+        "raw_ref": "raw://day18/paper-001/simulation",
+        "source": "captured_eth_call",
+        "observed_at": "2026-08-18T08:00:02Z",
+        "arrived_at": "2026-08-18T08:00:02.400Z",
+        "latency_ms": 400,
+        "success": true,
+        "minimum_output_satisfied": true
+      },
+      "inventory_deltas": [
+        {"chain_id": 8453, "asset_id": "USDC", "raw_delta": -100000000},
+        {"chain_id": 42161, "asset_id": "USDC", "raw_delta": 103000000}
+      ],
+      "rebalance_deltas": [
+        {"chain_id": 8453, "asset_id": "USDC", "raw_delta": 100000000},
+        {"chain_id": 42161, "asset_id": "USDC", "raw_delta": -103000000}
+      ],
+      "rebalance_evidence": {
+        "request_id": "req-day18-001-rebalance",
+        "raw_ref": "raw://day18/paper-001/rebalance",
+        "source": "captured_rebalance_quote",
+        "observed_at": "2026-08-18T08:00:05Z",
+        "arrived_at": "2026-08-18T08:00:05.500Z",
+        "latency_ms": 500
+      }
+    }
+  ]
+}
